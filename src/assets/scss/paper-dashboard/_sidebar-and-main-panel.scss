@@ -83,10 +83,11 @@
                 position: relative;
                 text-transform: uppercase;
                 cursor: pointer;
-                font-size: 12px;
+                font-size: 13px;/*changed 12 to 13px done by Vishal on 24th july 2020*/
                 padding: 10px 8px;
                 line-height: 30px;
                 opacity: .7;
+                font-weight: bold;/*added by Vishal on 24th july 2020*/
             }
 
             .nav > li > a{
@@ -241,14 +242,19 @@
         @include icon-gradient($default-color);
         z-index: 3;
     }
-
+    /* original code commented below done on 24th july 2020 */
     &[data-color="white"]{
-      @include sidebar-color($white-color);
-      @include sidebar-text-color($default-color);
+      @include sidebar-color($blue-color);
+      @include sidebar-text-color($white-color);
     }
+    /* &[data-color="white"]{
+        @include sidebar-color($white-color);
+        @include sidebar-text-color($default-color);
+    } */
     &[data-color="black"]{
       @include sidebar-color($dark-color);
     }
+   
 
 
     // Active color changing
