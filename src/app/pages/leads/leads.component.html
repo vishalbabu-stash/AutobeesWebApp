@@ -1,28 +1,56 @@
 <div class="row">
+    <!-- changes starts on 05aug2020 -->
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"> List of Leads</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                <table id="users" class="table">
+                <tr>
+                 <th *ngFor="let col of columns">
+                {{col}}
+                </th>
+                </tr>
+                <tr *ngFor="let user of users">
+                <td *ngFor="let col of index">
+                {{user[col]}}
+                </td>
+                </tr>
+                </table>
+                </div>
+            </div>
+      </div>
+    </div>
+        <!-- changes ends on 05aug2020 -->
     <div class="col-md-12">
         <div class="card card-user">
             <div class="card-header">
-                <h5 class="card-title">Leads Profile</h5>
+                <h5 class="card-title">Add Leads Profile</h5>
             </div>
             <div class="card-body">
-                <form>
+                <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
                     <div class="row">
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
                                 <label>Vehicle No</label>
-                                <input type="text" class="form-control" placeholder="Vehicle No" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Vehicle No" value=""> -->
+                                <input type="text" class="form-control" placeholder="Vehicle No" name="Vehicle_No" ngModel>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group">
                                 <label>Client Name</label>
-                                <input type="text" class="form-control" placeholder="Client Name" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Client Name" value=""> -->
+                                <input type="text" class="form-control" placeholder="Client Name" name="Client_Name" ngModel>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
                                 <label>Concern Name</label>
-                                <input type="text" class="form-control" placeholder="Concern Name" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Concern Name" value=""> -->
+                                <input type="text" class="form-control" placeholder="Concern Name" name="Concern_Name" ngModel>
                             </div>
                         </div>
                     </div>
@@ -30,23 +58,40 @@
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
                                 <label>Client ID</label>
-                                <input type="text" class="form-control" placeholder="Client ID" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Client ID" value=""> -->
+                                <input type="text" class="form-control" placeholder="Client ID" name="Client_ID" ngModel>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
-                            <div class="form-group">
-                                <!-- <button class="dropbtn">Dropdown</button>
-                                <div class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                </div> -->
+                            <!-- <div class="form-group">
                                 <label>Vehicle Type</label>
-                                <input type="text" class="form-control" placeholder="Vehicle Type" value="">
+                                <select class="form-control">
+                                    <option *ngfor='let album of lstAlbums'[value]="album.id">
+                                        {{album.title}}
+                                    </option>
+                                </select> -->
+                                <!-- <input type="text" class="form-control" placeholder="Vehicle Type" value="">  -->
+                            <div class="form-group">
+                                <label>Vehicle Type</label>
+                                <!-- <select class="form-control"> -->
+                                <select class="form-control" name="Vehicle_Type" ngModel> 
+                                    <option selected="" value=""></option>
+                                    <option [ngValue]="k.ItemValue" *ngFor="let k of leadsDropDownList.Vehicle_Type">
+                                        {{k.ItemValue}}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
                                 <label>Vehicle Category</label>
-                                <input type="text" class="form-control" placeholder="Vehicle Category" value="">
+                                <!-- <select class="form-control"> -->
+                                <select class="form-control" name="Vehicle_Category" ngModel>
+                                    <option selected="" value=""></option>
+                                    <option [ngValue]="k.ItemValue" *ngFor="let k of leadsDropDownList.Vehicle_Category">
+                                        {{k.ItemValue}}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -54,19 +99,37 @@
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
                                 <label>Bank Name</label>
-                                <input type="text" class="form-control" placeholder="Bank Name" value="">
+                                <!-- <select class="form-control"> -->
+                                <select class="form-control" name="Bank_Name" ngModel>
+                                    <option selected="" value=""></option>
+                                    <option [ngValue]="k.ItemValue" *ngFor="let k of leadsDropDownList.Bank_Name">
+                                        {{k.ItemValue}}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group">
                                 <label>Location</label>
-                                <input type="text" class="form-control" placeholder="Location" value="">
+                                <!-- <select class="form-control"> -->
+                                <select class="form-control" name="Location" ngModel>
+                                    <option selected="" value=""></option>
+                                    <option [ngValue]="k.ItemValue" *ngFor="let k of leadsDropDownList.Location">
+                                        {{k.ItemValue}}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
                                 <label>Fees Type</label>
-                                <input type="text" class="form-control" placeholder="Fees Type" value="">
+                                <!-- <select class="form-control"> -->
+                                    <select class="form-control" name="Fees_Type" ngModel>
+                                    <option selected="" value=""></option>
+                                    <option [ngValue]="k.ItemValue" *ngFor="let k of leadsDropDownList.Fees_Type">
+                                        {{k.ItemValue}}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -74,19 +137,22 @@
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
                                 <label>Coordinator ID</label>
-                                <input type="text" class="form-control" placeholder="Coordinator ID" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Coordinator ID" value=""> -->
+                                <input type="text" class="form-control" placeholder="Coordinator ID" name="Coordinator_ID" ngModel>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group">
                                 <label>Request ID</label>
-                                <input type="text" class="form-control" placeholder="Request ID" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Request ID" value=""> -->
+                                <input type="text" class="form-control" placeholder="Request ID" name="Request_ID" ngModel>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
                                 <label>Customer Name</label>
-                                <input type="text" class="form-control" placeholder="Customer Name" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Customer Name" value=""> -->
+                                <input type="text" class="form-control" placeholder="Customer Name" name="Customer_Name" ngModel>
                             </div>
                         </div>
                     </div>
@@ -94,19 +160,22 @@
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
                                 <label>Phone Number</label>
-                                <input type="text" class="form-control" placeholder="Phone Number" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Phone Number" value=""> -->
+                                <input type="text" class="form-control" placeholder="Phone Number" name="Phone_Number" ngModel>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group">
                                 <label>Executive Name</label>
-                                <input type="text" class="form-control" placeholder="Executive Name" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Executive Name" value=""> -->
+                                <input type="text" class="form-control" placeholder="Executive Name" name="Executive_Name" ngModel>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
                                 <label>Executive Phone Number</label>
-                                <input type="text" class="form-control" placeholder="Executive Phone Number" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Executive Phone Number" value=""> -->
+                                <input type="text" class="form-control" placeholder="Executive Phone Number" name="Executive_Phone_number" ngModel>
                             </div>
                         </div>
                     </div>
@@ -114,19 +183,22 @@
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
                                 <label>Report Prepared in</label>
-                                <input type="text" class="form-control" placeholder="Report Prepared in" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Report Prepared in" value=""> -->
+                                <input type="text" class="form-control" placeholder="Report Prepared in" name="Report_Prepared_in" ngModel>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group">
                                 <label>Payment Status</label>
-                                <input type="text" class="form-control" placeholder="Payment Status" value="">
+                                <!-- <input type="text" class="form-control" placeholder="Payment Status" value=""> -->
+                                <input type="text" class="form-control" placeholder="Payment Status" name="Payment_Status" ngModel>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
                                 <label>RC status</label>
-                                <input type="text" class="form-control" placeholder="RC status" value="">
+                                <!-- <input type="text" class="form-control" placeholder="RC status" value=""> -->
+                                <input type="text" class="form-control" placeholder="RC status" name="RC_status" ngModel>
                             </div>
                         </div>
                     </div>
@@ -134,19 +206,22 @@
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label>Insurance Status </label>
-                                <input type="text" class="form-control" placeholder="Insurance Status " value="">
+                                <!-- <input type="text" class="form-control" placeholder="Insurance Status" value=""> -->
+                                <input type="text" class="form-control" placeholder="Insurance Status" name="Insurance_Status" ngModel>
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 <label>Date of insurance Expiry</label>
-                                <input type="text" class="form-control" placeholder="Date of insurance Expiry" value="">
+                                <!-- <input type="date" class="form-control" id="DateofinsuranceExpiry" value=""> -->
+                                <input type="date" class="form-control" placeholder="Date of insurance Expiry" name="Date_of_insurance_Expiry" ngModel>
                             </div>
                         </div>
                     </div>                 
                     <div class="row">
                         <div class="update ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary btn-round">Add Leads</button>
+                            <!-- <button type="submit" class="btn btn-primary btn-round">Add Leads</button> -->
+                            <button type="submit" class="btn btn-primary btn-round" >Add Leads</button>
                         </div>
                     </div>
                 </form>

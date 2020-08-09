@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 declare interface TableData {
     headerRow: string[];
     dataRows: string[][];
@@ -11,7 +12,10 @@ declare interface TableData {
     templateUrl: 'table.component.html'
 })
 
-export class TableComponent implements OnInit{
+
+export class TableComponent{
+
+    
     public tableData1: TableData;
     public tableData2: TableData;
     ngOnInit(){
@@ -39,3 +43,4 @@ export class TableComponent implements OnInit{
         };
     }
 }
+
